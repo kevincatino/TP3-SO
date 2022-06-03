@@ -8,5 +8,6 @@ clean:
 
 recompile:
 	@make clean; make all
+	@echo "\033[1;3;35m[Proyect recompile]\033[0m"
 
 .PHONY: all clean recompile

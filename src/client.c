@@ -4,44 +4,56 @@
 #include <sys/socket.h>
 #include <unistd.h>
 #define PORT 8080
+#define BUFFER_SIZE 1024
+#define FINAL_MSG "¡Felicitiaciones, han finalizado el juego!\n"
+
 
 // Fuente: https://www.geeksforgeeks.org/socket-programming-cc/
- 
-int main(int argc, char const* argv[])
+
+int main(int argc, char const *argv[])
 {
     int socketFd = 0, length, client_fd;
     struct sockaddr_in serv_addr;
 
-    char buffer[1024] = { 0 };
-    if ((socketFd = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
+    char buffer[BUFFER_SIZE] = {0};
+    if ((socketFd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
+    {
         printf("\n Socket creation error \n");
         return -1;
     }
- 
+
     serv_addr.sin_family = AF_INET;
     serv_addr.sin_port = htons(PORT);
- 
 
-    if (inet_pton(AF_INET, "0.0.0.0", &serv_addr.sin_addr)
-        <= 0) {
+    if (inet_pton(AF_INET, "0.0.0.0", &serv_addr.sin_addr) <= 0)
+    {
         printf(
             "\nInvalid address/ Address not supported \n");
         return -1;
     }
- 
-    if ((client_fd
-         = connect(socketFd, (struct sockaddr*)&serv_addr,
-                   sizeof(serv_addr)))
-        < 0) {
+
+    if ((client_fd = connect(socketFd, (struct sockaddr *)&serv_addr,
+                             sizeof(serv_addr))) < 0)
+    {
         printf("\nConnection Failed \n");
         return -1;
     }
-    send(socketFd, "entendido\n",10 , 0);
-    printf("Hello message sent\n");
-    length = read(socketFd, buffer, 1024);
-    printf("%s\n", buffer);
- 
+    int n;
+    setvbuf(stdout, NULL, _IONBF, 0);
+    do
+    {
+        printf("%s", "Ingrese la respuesta: ");
+        n = read(0, buffer, BUFFER_SIZE);
+        buffer[n] = '\0';
+        if (send(socketFd, buffer, strlen(buffer), 0) == -1)
+        {
+            close(socketFd);
+            return -1;
+        }
 
-    close(client_fd);
+    } while (n > 0);
+
+    printf("%s", FINAL_MSG);
+    close(socketFd);
     return 0;
 }
