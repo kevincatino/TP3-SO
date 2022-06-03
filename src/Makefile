@@ -13,29 +13,30 @@ TARGET_CLIENT := ../client
 TARGETS := $(TARGET_SERVER) $(TARGET_CLIENT)
 
 
-all: $(SERVER) $(CLIENT)
+
+all: server client
 
 
-$(SERVER): $(OBJECTS_SERVER) $(OBJECTS_CHALLENGES)
+server: $(OBJECTS_SERVER) $(OBJECTS_CHALLENGES)
 	@$(GCC) $(GCCFLAGS) $(OBJECTS_SERVER) $(OBJECTS_CHALLENGES) -o $(TARGET_SERVER) $(GCCLM)
 	-@rm -rf $(OBJECTS_SERVER)
 	-@rm -rf $(OBJECTS_CHALLENGES)
-	@echo "\033[3;36m[Server compiled]\033[0m"
+	@echo -e "\e[3;36m[Server compiled] \e[0m"
 
 
-$(CLIENT): $(OBJECTS_CLIENT)
+client: $(OBJECTS_CLIENT)
 	@$(GCC) $(GCCFLAGS) $< -o $(TARGET_CLIENT)
 	-@rm -rf $(OBJECTS_CLIENT)
-	@echo "\033[3;36m[Client compiled]\033[0m"
+	@echo -e "\e[3;36m[Client compiled] \e[0m"
 
 
 %.o: %.c
 	@$(GCC) $(GCCFLAGS) -I./include -c $< -o $@ $(GCCLM)
-	@echo "\033[32mCompiled object file \033[0m $@"
+	@echo -e "\e[32mCompiled object file\e[0m $@"
 
 
 clean:
 	-@rm -rf $(TARGETS)
 	-@rm -rf $(OBJECTS_SERVER)
 	-@rm -rf $(OBJECTS_CHALLENGES)
-	@echo "\033[3;35m[src cleaned]\033[0m"
+	@echo -e "\e[3;35m[src cleaned] \e[0m"

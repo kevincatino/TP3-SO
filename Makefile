@@ -1,6 +1,9 @@
-all:
-	@cd src; make all
+all: src
 	@echo "\033[1;3;36m[Proyect compiled]\033[0m"
+
+src: 
+	@cd src; make all
+	@echo "\033[1;1;34m[src compiled]\033[0m"
 
 clean:
 	@cd src; make clean
@@ -8,6 +11,6 @@ clean:
 
 recompile:
 	@make clean; make all
-	@echo "\033[1;3;35m[Proyect recompile]\033[0m"
+	@echo "\033[1;3;37m[Proyect recompile]\033[0m"
 
-.PHONY: all clean recompile
+.PHONY: src all clean recompile
