@@ -7,7 +7,6 @@
 #define BUFFER_SIZE 1024
 #define FINAL_MSG "¡Felicitiaciones, han finalizado el juego!\n"
 
-
 // Fuente: https://www.geeksforgeeks.org/socket-programming-cc/
 
 int main(int argc, char const *argv[])
