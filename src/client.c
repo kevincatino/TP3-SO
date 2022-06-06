@@ -11,7 +11,7 @@
 
 int main(int argc, char const *argv[])
 {
-    int socketFd = 0, length, client_fd;
+    int socketFd = 0, client_fd;
     struct sockaddr_in serv_addr;
 
     char buffer[BUFFER_SIZE] = {0};

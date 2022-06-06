@@ -4,18 +4,17 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <unistd.h>
+#include "challenges.h"
 #define PORT 8080
 
 // Fuente: https://www.geeksforgeeks.org/socket-programming-cc/
 
 int main(int argc, char const* argv[])
 {
-    int server_fd, new_socket, valread;
+    int server_fd, new_socket;
     struct sockaddr_in address;
     int opt = 1;
     int addrlen = sizeof(address);
-    char buffer[1024] = { 0 };
-    char* hello = "Hello from server";
  
     // Creating socket file descriptor
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0))
@@ -59,14 +58,18 @@ int main(int argc, char const* argv[])
         perror("accept");
         exit(EXIT_FAILURE);
     }
-    valread = read(new_socket, buffer, 1024);
-    printf("%s\n", buffer);
-    send(new_socket, hello, strlen(hello), 0);
-    printf("Hello message sent\n");
+    // read(new_socket, buffer, 1024);
+    // printf("%s\n", buffer);
+    // send(new_socket, hello, strlen(hello), 0);
+    // c
+
+    challengesLoop(new_socket);
    
   // closing the connected socket
     close(new_socket);
   // closing the listening socket
     shutdown(server_fd, SHUT_RDWR);
+    
+    
     return 0;
 }
