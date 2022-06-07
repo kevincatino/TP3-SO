@@ -16,8 +16,9 @@ static int challenge5();
 static int challenge6();
 // Falta el 7
 static int challenge8();
+static int challenge9();
 
-int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2, &challenge3, &challenge4, &challenge5, &challenge6, &challenge8};
+int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2, &challenge3, &challenge4, &challenge5, &challenge6, &challenge8, &challenge9};
 
 int clientFd;
 
@@ -143,4 +144,17 @@ static int challenge8() {
   printf("¿Qué aplicaciones se pueden utilizar para ver el tráfico por la red?\n\n");
 
   return verifyAnswer("BUmyYq5XxXGt");
+}
+
+static int challenge9() {
+  printf(
+    "Latexme\n\n"
+    "Si\n"
+    " \\mathrm{d}y = u^v{\\cdot}(v'{\\cdot}\\ln{(u)}+v{\\cdot}\\frac{u'}{u})\n"
+    "entonces\n"
+    "y = \n\n");
+  printf("%s", INVESTIGAR_MSJ);
+  printf("sockets es un mecanismo de IPC. ¿Qué es más eficiente entre sockets y pipes?\n\n");
+
+  return verifyAnswer("u^v");
 }
