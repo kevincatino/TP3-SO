@@ -14,11 +14,11 @@ static int challenge3();
 static int challenge4();
 static int challenge5();
 static int challenge6();
-// Falta el 7
+static int challenge7();
 static int challenge8();
 static int challenge9();
 
-int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2, &challenge3, &challenge4, &challenge5, &challenge6, &challenge8, &challenge9};
+int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2, &challenge3, &challenge4, &challenge5, &challenge6, &challenge7, &challenge8, &challenge9};
 
 int clientFd;
 
@@ -44,6 +44,8 @@ void challengesLoop(int fd)
 {
 
     clientFd = fd;
+
+    srand(time(0));
 
     char buffer[BUFFER_SIZE] = {0};
 
@@ -135,6 +137,27 @@ static int challenge6()
     printf("%s", "Un servidor suele crear un nuevo proceso o thread para atender las conexiones entrantes. ¿Qué conviene más?\n\n");
 
     return verifyAnswer(".RUN_ME");
+}
+
+static int challenge7() {
+  printf("Filter error\n\n");
+  char *s = "La respuesta es K5n2UFfpFMUN\n";
+  setvbuf(stdout, NULL, _IONBF, 0);
+// There are 95 printable ASCII characters, numbered 32 to 126.
+  for (int i = 0; i < strlen(s); i++) {
+    for (int j = 0; j < rand() % 30; j++) {
+      char c = ((rand() % 95) + 32);
+      write(2, &c, 1);
+    }
+    // scanf("%d", &c);
+    write(1, &s[i], 1);
+    // setvbuf(stdout, NULL, _IONBF, 0);
+  }
+  printf("\n");
+  printf(INVESTIGAR_MSJ);
+  printf("¿Cómo se puede implementar un servidor que atienda muchas conexiones sin usar procesos ni threads?\n\n");
+
+  return verifyAnswer("K5n2UFfpFMUN");
 }
 
 static int challenge8() {
