@@ -7,6 +7,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <math.h>
 
 static int challenge1();
 static int challenge2();
@@ -18,8 +19,10 @@ static int challenge7();
 static int challenge8();
 static int challenge9();
 static int challenge10();
+static int challenge11();
+static int challenge12();
 
-int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2, &challenge3, &challenge4, &challenge5, &challenge6, &challenge7, &challenge8, &challenge9, &challenge10, &challenge11};
+int (*challenges[CHALLENGE_QTY])(void) = {&challenge12, &challenge1, &challenge2, &challenge3, &challenge4, &challenge5, &challenge6, &challenge7, &challenge8, &challenge9, &challenge10, &challenge11};
 
 int clientFd;
 
@@ -231,3 +234,36 @@ static int challenge11() {
   return verifyAnswer("gdb_rules");
 }
 
+static double randn (double mu, double sigma)
+{
+  double U1, U2, W, mult;
+  static double X1, X2;
+ 
+  do
+    {
+      U1 = -1 + ((double) rand () / RAND_MAX) * 2;
+      U2 = -1 + ((double) rand () / RAND_MAX) * 2;
+      W = pow (U1, 2) + pow (U2, 2);
+    }
+  while (W >= 1 || W == 0);
+ 
+  mult = sqrt ((-2 * log (W)) / W);
+  X1 = U1 * mult;
+  X2 = U2 * mult;
+
+ 
+  return (mu + sigma * (double) X1);
+}
+
+static int challenge12() {
+  printf("Me conoces\n\n");
+
+  for (int i = 0; i < 1000; i++)
+    printf("%.6f ", randn(0, 1));
+
+  printf("\n\n");
+  printf(INVESTIGAR_MSJ);
+  printf("¿Fue divertido?\n\n");
+
+  return verifyAnswer("normal");
+}
