@@ -22,7 +22,7 @@ static int challenge10();
 static int challenge11();
 static int challenge12();
 
-int (*challenges[CHALLENGE_QTY])(void) = {&challenge12, &challenge1, &challenge2, &challenge3, &challenge4, &challenge5, &challenge6, &challenge7, &challenge8, &challenge9, &challenge10, &challenge11};
+int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2, &challenge3, &challenge4, &challenge5, &challenge6, &challenge7, &challenge8, &challenge9, &challenge10, &challenge11, &challenge12};
 
 int clientFd;
 
