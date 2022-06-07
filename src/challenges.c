@@ -11,10 +11,10 @@
 static int challenge1();
 static int challenge2();
 static int challenge3();
-// static int challenge4();
+static int challenge4();
 // static int challenge5();
 
-int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2, &challenge3};
+int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2, &challenge3, &challenge4};
 
 int clientFd;
 
@@ -100,16 +100,17 @@ static int challenge3()
     return verifyAnswer("M4GFKZ289aku");
 }
 
-// static int challenge4()
-// {
-//     printf("%s", "EBADF...\n\n");
+static int challenge4()
+{
+    printf("%s", "EBADF...\n\n");
+    char* respuestaCorrecta = "La respuesta correcta es fk3wfLCm3QvS";
 
-//      if (write(13, res, strlen(res)) == -1)
-//         perror("write");
+     if (write(13, respuestaCorrecta, strlen(respuestaCorrecta)) == -1)
+        perror("write");
 
-//     printf("%s", "write: Bad file descriptor\n\n")
-//     printf("%s", INVESTIGAR_MSJ);
-//     printf("%s", "¿Qué útil abstraccion es utilizada para comunicarse con sockets? ¿se puede utilizar read(2) y write(2) para operar?\n\n");
+    printf("\n");
+    printf("%s", INVESTIGAR_MSJ);
+    printf("%s", "¿Qué útil abstraccion es utilizada para comunicarse con sockets? ¿se puede utilizar read(2) y write(2) para operar?\n\n");
 
-//     return verifyAnswer("fk3wfLCm3QvS");
-// }
+    return verifyAnswer("fk3wfLCm3QvS");
+}
