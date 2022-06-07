@@ -19,7 +19,7 @@ static int challenge8();
 static int challenge9();
 static int challenge10();
 
-int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2, &challenge3, &challenge4, &challenge5, &challenge6, &challenge7, &challenge8, &challenge9, &challenge10};
+int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2, &challenge3, &challenge4, &challenge5, &challenge6, &challenge7, &challenge8, &challenge9, &challenge10, &challenge11};
 
 int clientFd;
 
@@ -210,5 +210,24 @@ static int challenge10()
     printf("¿Cuáles son las características del protocolo SCTP?\n\n");
 
     return verifyAnswer("chin_chu_lan_cha");
+}
+
+static long dummy() {
+    return 0;
+}
+
+static void gdbme() {
+  if (dummy() == 0x12345678)
+    printf("La respuesta es: gdb_rules\n\n");
+}
+
+static int challenge11() {
+  printf("b gdbme y encontrá el valor mágico\n\n");
+  printf("ENTER para reintentar.\n\n");
+  gdbme();
+  printf(INVESTIGAR_MSJ);
+  printf("¿Qué es un RFC?\n\n");
+
+  return verifyAnswer("gdb_rules");
 }
 
