@@ -13,8 +13,9 @@ static int challenge2();
 static int challenge3();
 static int challenge4();
 static int challenge5();
+static int challenge6();
 
-int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2, &challenge3, &challenge4, &challenge5};
+int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2, &challenge3, &challenge4, &challenge5, &challenge6};
 
 int clientFd;
 
@@ -122,4 +123,13 @@ static int challenge5()
     printf("%s", "¿Cómo garantiza TCP que los paquetes llegan en orden y no se pierden?\n");
     
     return verifyAnswer("too_easy");
+}
+
+static int challenge6()
+{
+    printf("%s", ".init .plt .text ? .fini .rodata .eh_frame_hdr\n\n\n");
+    printf("%s", INVESTIGAR_MSJ);
+    printf("%s", "Un servidor suele crear un nuevo proceso o thread para atender las conexiones entrantes. ¿Qué conviene más?\n\n");
+
+    return verifyAnswer(".RUN_ME");
 }
