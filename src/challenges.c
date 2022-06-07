@@ -12,9 +12,9 @@ static int challenge1();
 static int challenge2();
 static int challenge3();
 static int challenge4();
-// static int challenge5();
+static int challenge5();
 
-int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2, &challenge3, &challenge4};
+int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2, &challenge3, &challenge4, &challenge5};
 
 int clientFd;
 
@@ -113,4 +113,13 @@ static int challenge4()
     printf("%s", "¿Qué útil abstraccion es utilizada para comunicarse con sockets? ¿se puede utilizar read(2) y write(2) para operar?\n\n");
 
     return verifyAnswer("fk3wfLCm3QvS");
+}
+
+static int challenge5() 
+{
+    printf("%s", "respuesta = strings:277\n\n");
+    printf("%s", INVESTIGAR_MSJ);
+    printf("%s", "¿Cómo garantiza TCP que los paquetes llegan en orden y no se pierden?\n");
+    
+    return verifyAnswer("too_easy");
 }
