@@ -10,11 +10,11 @@
 
 static int challenge1();
 static int challenge2();
-// static int challenge3();
+static int challenge3();
 // static int challenge4();
 // static int challenge5();
 
-int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2};
+int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2, &challenge3};
 
 int clientFd;
 
@@ -90,3 +90,26 @@ static int challenge2()
 
     return verifyAnswer("itba");
 }
+
+static int challenge3()
+{
+    printf("%s", "https://ibb.co/tc0Hb6w\n\n");
+    printf("%s", INVESTIGAR_MSJ);
+    printf("%s", "¿El puerto que usaron para conectarse al server es el mismo que usan para mandar las respuestas? ¿Por qué?\n\n");
+
+    return verifyAnswer("M4GFKZ289aku");
+}
+
+// static int challenge4()
+// {
+//     printf("%s", "EBADF...\n\n");
+
+//      if (write(13, res, strlen(res)) == -1)
+//         perror("write");
+
+//     printf("%s", "write: Bad file descriptor\n\n")
+//     printf("%s", INVESTIGAR_MSJ);
+//     printf("%s", "¿Qué útil abstraccion es utilizada para comunicarse con sockets? ¿se puede utilizar read(2) y write(2) para operar?\n\n");
+
+//     return verifyAnswer("fk3wfLCm3QvS");
+// }
