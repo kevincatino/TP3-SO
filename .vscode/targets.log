@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jun  3 16:59:13 2022
+# Make data base, printed on Tue Jun  7 11:32:49 2022
 
 # Variables
 
@@ -23,7 +23,7 @@ SNAP_INSTANCE_KEY =
 # environment
 GJS_DEBUG_OUTPUT = stderr
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-edf1a89c-3e82-4064-b884-c044b8212e73.sock
+VSCODE_IPC_HOOK_EXTHOST = /run/user/1000/vscode-ipc-84f25047-d491-4795-ab10-06889c318749.sock
 # environment
 MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
@@ -79,7 +79,7 @@ CURDIR := /home/lucas/Documents/ITBA/Tercer_Ano_1-2_2022/Sistemas_Operativos/TPE
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # automatic
@@ -107,7 +107,7 @@ SNAP_REEXEC =
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
-VSCODE_PID = 46585
+VSCODE_PID = 5800
 # environment
 XDG_SESSION_TYPE = x11
 # automatic
@@ -115,7 +115,7 @@ XDG_SESSION_TYPE = x11
 # environment
 BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # environment
-SESSION_MANAGER = local/lucas-GF65-Thin-9SD:@/tmp/.ICE-unix/3925,unix/lucas-GF65-Thin-9SD:/tmp/.ICE-unix/3925
+SESSION_MANAGER = local/lucas-GF65-Thin-9SD:@/tmp/.ICE-unix/4007,unix/lucas-GF65-Thin-9SD:/tmp/.ICE-unix/4007
 # automatic
 *F = $(notdir $*)
 # environment
@@ -161,7 +161,7 @@ LC_TIME = es_AR.UTF-8
 # environment
 SNAP = /snap/code/97
 # environment
-INVOCATION_ID = 2349d29f9e1244268bfddc12e13fe346
+INVOCATION_ID = 9669403583fa4a338d1a79fa0a67b172
 # environment
 SNAP_REVISION = 97
 # environment
@@ -197,7 +197,7 @@ SNAP_ARCH = amd64
 # makefile
 .DEFAULT_GOAL := all
 # environment
-SYSTEMD_EXEC_PID = 3947
+SYSTEMD_EXEC_PID = 4034
 # environment
 DISPLAY = :1
 # environment
@@ -215,11 +215,11 @@ SNAP_DATA = /var/snap/code/97
 # environment
 SNAP_CONTEXT = YT-rF3-9T2XD5irY5NfaHp8kMY-yydC8T3giJCK0lPz94egvotnr
 # environment
-MANAGERPID = 3629
+MANAGERPID = 3716
 # environment
 LC_MEASUREMENT = es_AR.UTF-8
 # environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 46536
+GIO_LAUNCHED_DESKTOP_FILE_PID = 5748
 # environment
 _ = /snap/code/97/usr/share/code/code
 # environment
@@ -231,7 +231,7 @@ GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
 GDK_PIXBUF_MODULE_FILE = /home/lucas/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
-JOURNAL_STREAM = 8:49313
+JOURNAL_STREAM = 8:43861
 # environment
 XDG_SESSION_CLASS = user
 # environment
@@ -278,6 +278,7 @@ LC_IDENTIFICATION = es_AR.UTF-8
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # variable set hash-table stats:
 # Load=133/1024=13%, Rehash=0, Collisions=6/166=4%
+ 
 
 # Pattern-specific Variable Values
 
@@ -285,21 +286,20 @@ SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd
 
 # Directories
 
-# . (device 66312, inode 6818233): 8 files, no impossibilities.
+# . (device 66312, inode 6818233): 10 files, no impossibilities.
 
-# 8 files, no impossibilities in 1 directories.
+# 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
 # No implicit rules.
- 
 
 # Files
 
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-06-03 16:58:53.578845746
+#  Last modified 2022-06-03 17:15:27.684203494
 #  File has been updated.
 #  Successfully updated.
 
@@ -308,7 +308,7 @@ clean:
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 6):
+#  recipe to execute (from 'Makefile', line 9):
 	@cd src; make clean
 	@echo "\033[1;3;35m[Proyect cleaned]\033[0m"
 
@@ -318,16 +318,27 @@ clean:
 #  Modification time never checked.
 #  File has not been updated.
 
-all:
+all: src
 #  Phony target (prerequisite of .PHONY).
 #  Command line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+#  recipe to execute (from 'Makefile', line 2):
+	@echo "\033[1;3;36m[Proyect compiled]\033[0m"
+
+src:
+#  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: ''
 #  File does not exist.
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # automatic
-# @ := all
+# @ := src
 # automatic
 # * := 
 # automatic
@@ -344,18 +355,18 @@ all:
 # | := 
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/11=9%
-#  recipe to execute (from 'Makefile', line 2):
+#  recipe to execute (from 'Makefile', line 5):
 	@cd src; make all
-	@echo "\033[1;3;36m[Proyect compiled]\033[0m"
+	@echo "\033[1;1;34m[src compiled]\033[0m"
 
 recompile:
 #  Phony target (prerequisite of .PHONY).
 #  Implicit rule search has not been done.
 #  File does not exist.
 #  File has not been updated.
-#  recipe to execute (from 'Makefile', line 10):
+#  recipe to execute (from 'Makefile', line 13):
 	@make clean; make all
-	@echo "\033[1;3;35m[Proyect recompile]\033[0m"
+	@echo "\033[1;3;37m[Proyect recompile]\033[0m"
 
 # Not a target:
 .SUFFIXES:
@@ -363,25 +374,25 @@ recompile:
 #  Modification time never checked.
 #  File has not been updated.
 
-.PHONY: all clean recompile
+.PHONY: src all clean recompile
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # files hash-table stats:
-# Load=7/1024=1%, Rehash=0, Collisions=0/22=0%
+# Load=8/1024=1%, Rehash=0, Collisions=0/26=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 16 / storage = 130 B / avg = 8 B
-# current buf: size = 8162 B / used = 130 B / count = 16 / avg = 8 B
+# strcache buffers: 1 (0) / strings = 18 / storage = 144 B / avg = 8 B
+# current buf: size = 8162 B / used = 144 B / count = 18 / avg = 8 B
 
-# strcache performance: lookups = 29 / hit rate = 44%
+# strcache performance: lookups = 35 / hit rate = 48%
 # hash-table stats:
-# Load=16/8192=0%, Rehash=0, Collisions=0/29=0%
-# Finished Make data base on Fri Jun  3 16:59:13 2022
+# Load=18/8192=0%, Rehash=0, Collisions=0/35=0%
+# Finished Make data base on Tue Jun  7 11:32:49 2022
 
  

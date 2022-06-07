@@ -14,8 +14,10 @@ static int challenge3();
 static int challenge4();
 static int challenge5();
 static int challenge6();
+// Falta el 7
+static int challenge8();
 
-int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2, &challenge3, &challenge4, &challenge5, &challenge6};
+int (*challenges[CHALLENGE_QTY])(void) = {&challenge1, &challenge2, &challenge3, &challenge4, &challenge5, &challenge6, &challenge8};
 
 int clientFd;
 
@@ -132,4 +134,13 @@ static int challenge6()
     printf("%s", "Un servidor suele crear un nuevo proceso o thread para atender las conexiones entrantes. ¿Qué conviene más?\n\n");
 
     return verifyAnswer(".RUN_ME");
+}
+
+static int challenge8() {
+  printf("¿?\n\n");
+  printf("\033[30;40mLa respuesta es BUmyYq5XxXGt\033[0m\n\n");
+  printf("%s", INVESTIGAR_MSJ);
+  printf("¿Qué aplicaciones se pueden utilizar para ver el tráfico por la red?\n\n");
+
+  return verifyAnswer("BUmyYq5XxXGt");
 }
