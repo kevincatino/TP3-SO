@@ -5,7 +5,8 @@
 #include <sys/socket.h>
 #include <unistd.h>
 #include "challenges.h"
-#define PORT 8080
+#include "server.h"
+
 
 // Fuente: https://www.geeksforgeeks.org/socket-programming-cc/
 
@@ -32,12 +33,6 @@ int main(int argc, char const* argv[])
     }
     address.sin_family = AF_INET;
     address.sin_addr.s_addr = INADDR_ANY;
-    // if (inet_pton(AF_INET, "0.0.0.0", &address.sin_addr) <= 0)
-    // {
-    //     printf(
-    //         "\nInvalid address/ Address not supported \n");
-    //     return -1;
-    // }
     address.sin_port = htons(PORT);
  
     // Forcefully attaching socket to the port 8080
@@ -58,10 +53,6 @@ int main(int argc, char const* argv[])
         perror("accept");
         exit(EXIT_FAILURE);
     }
-    // read(new_socket, buffer, 1024);
-    // printf("%s\n", buffer);
-    // send(new_socket, hello, strlen(hello), 0);
-    // c
 
     challengesLoop(new_socket);
    

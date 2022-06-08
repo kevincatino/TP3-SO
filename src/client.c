@@ -3,9 +3,8 @@
 #include <string.h>
 #include <sys/socket.h>
 #include <unistd.h>
-#define PORT 8080
-#define BUFFER_SIZE 1024
-#define FINAL_MSG "¡Felicitiaciones, han finalizado el juego!\n"
+#include <stdlib.h>
+#include "client.h"
 
 // Fuente: https://www.geeksforgeeks.org/socket-programming-cc/
 
@@ -17,8 +16,8 @@ int main(int argc, char const *argv[])
     char buffer[BUFFER_SIZE] = {0};
     if ((socketFd = socket(AF_INET, SOCK_STREAM, 0)) < 0)
     {
-        printf("\n Socket creation error \n");
-        return -1;
+        perror("Socket creation error\n");
+        exit(EXIT_FAILURE);
     }
 
     serv_addr.sin_family = AF_INET;
@@ -26,16 +25,15 @@ int main(int argc, char const *argv[])
 
     if (inet_pton(AF_INET, "0.0.0.0", &serv_addr.sin_addr) <= 0)
     {
-        printf(
-            "\nInvalid address/ Address not supported \n");
-        return -1;
+        perror("Invalid address/ Address not supported \n");
+        exit(EXIT_FAILURE);
     }
 
     if ((client_fd = connect(socketFd, (struct sockaddr *)&serv_addr,
                              sizeof(serv_addr))) < 0)
     {
-        printf("\nConnection Failed \n");
-        return -1;
+        perror("Connection Failed \n");
+        exit(EXIT_FAILURE);
     }
     int n;
     setvbuf(stdout, NULL, _IONBF, 0);
@@ -52,7 +50,6 @@ int main(int argc, char const *argv[])
 
     } while (n > 0);
 
-    printf("%s", FINAL_MSG);
     close(socketFd);
     return 0;
 }

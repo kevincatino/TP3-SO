@@ -1,13 +1,11 @@
-#define INVESTIGAR_MSJ "----- PREGUNTA PARA INVESTIGAR -----\n"
-#define DESAFIO_MSJ "------------- DESAFIO -------------\n"
-#define CHALLENGE_QTY 12
-#define BUFFER_SIZE 256
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
 #include <math.h>
+#include <stdint.h>
+#include "challenges.h"
 
 static int challenge1();
 static int challenge2();
@@ -69,6 +67,7 @@ void challengesLoop(int fd)
 
     system("clear");
     printf("%s", "Felicitaciones, finalizaron el juego. Ahora deberán implementar el servidor que se comporte como el servidor provisto\n\n");
+
 }
 
 static int challenge1()
@@ -133,9 +132,12 @@ static int challenge5()
     return verifyAnswer("too_easy");
 }
 
+
+
+// Fuente: https://stackoverflow.com/questions/42235175/how-do-i-add-contents-of-text-file-as-a-section-in-an-elf-file
 static int challenge6()
 {
-    printf("%s", ".init .plt .text ? .fini .rodata .eh_frame_hdr\n\n\n");
+    printf("%s", ".text .fini .rodata ? .eh_frame_hdr .eh_frame .preinit_array\n\n\n");
     printf("%s", INVESTIGAR_MSJ);
     printf("%s", "Un servidor suele crear un nuevo proceso o thread para atender las conexiones entrantes. ¿Qué conviene más?\n\n");
 
@@ -147,17 +149,15 @@ static int challenge7()
     printf("Filter error\n\n");
     char *s = "La respuesta es K5n2UFfpFMUN\n";
     setvbuf(stdout, NULL, _IONBF, 0);
-    // There are 95 printable ASCII characters, numbered 32 to 126.
     for (int i = 0; i < strlen(s); i++)
     {
         for (int j = 0; j < rand() % 30; j++)
         {
+            // There are 95 printable ASCII characters, numbered 32 to 126.
             char c = ((rand() % 95) + 32);
             write(2, &c, 1);
         }
-        // scanf("%d", &c);
         write(1, &s[i], 1);
-        // setvbuf(stdout, NULL, _IONBF, 0);
     }
     printf("\n");
     printf(INVESTIGAR_MSJ);
@@ -215,55 +215,60 @@ static int challenge10()
     return verifyAnswer("chin_chu_lan_cha");
 }
 
-static long dummy() {
+// aprovechamos que un llamado a función devuelve su valor de retorno en rax
+static int32_t dummy()
+{
     return 0;
 }
 
-static void gdbme() {
-  if (dummy() == 0x12345678)
-    printf("La respuesta es: gdb_rules\n\n");
-}
-
-static int challenge11() {
-  printf("b gdbme y encontrá el valor mágico\n\n");
-  printf("ENTER para reintentar.\n\n");
-  gdbme();
-  printf(INVESTIGAR_MSJ);
-  printf("¿Qué es un RFC?\n\n");
-
-  return verifyAnswer("gdb_rules");
-}
-
-static double randn (double mu, double sigma)
+static void gdbme()
 {
-  double U1, U2, W, mult;
-  static double X1, X2;
- 
-  do
+    if (dummy() == 0x12345678)
+        printf("La respuesta es: gdb_rules\n\n");
+}
+
+static int challenge11()
+{
+    printf("b gdbme y encontrá el valor mágico\n\n");
+    printf("ENTER para reintentar.\n\n");
+    gdbme();
+    printf(INVESTIGAR_MSJ);
+    printf("¿Qué es un RFC?\n\n");
+
+    return verifyAnswer("gdb_rules");
+}
+
+// Fuente: https://phoxis.org/2013/05/04/generating-random-numbers-from-normal-distribution-in-c/
+static double randomNormal(double mu, double sigma)
+{
+    double U1, U2, W, mult;
+    static double X1;
+
+    do
     {
-      U1 = -1 + ((double) rand () / RAND_MAX) * 2;
-      U2 = -1 + ((double) rand () / RAND_MAX) * 2;
-      W = pow (U1, 2) + pow (U2, 2);
-    }
-  while (W >= 1 || W == 0);
- 
-  mult = sqrt ((-2 * log (W)) / W);
-  X1 = U1 * mult;
-  X2 = U2 * mult;
+        U1 = -1 + ((double)rand() / RAND_MAX) * 2;
+        U2 = -1 + ((double)rand() / RAND_MAX) * 2;
+        W = pow(U1, 2) + pow(U2, 2);
+    } while (W >= 1 || W == 0);
 
- 
-  return (mu + sigma * (double) X1);
+    mult = sqrt((-2 * log(W)) / W);
+    X1 = U1 * mult;
+
+    return (mu + sigma * (double)X1);
 }
 
-static int challenge12() {
-  printf("Me conoces\n\n");
+static int challenge12()
+{
+    printf("Me conoces\n\n");
 
-  for (int i = 0; i < 1000; i++)
-    printf("%.6f ", randn(0, 1));
+    for (int i = 0; i < 1000; i++)
+        printf("%.6f ", randomNormal(0, 1));
 
-  printf("\n\n");
-  printf(INVESTIGAR_MSJ);
-  printf("¿Fue divertido?\n\n");
+    printf("\n\n");
+    printf(INVESTIGAR_MSJ);
+    printf("¿Fue divertido?\n\n");
 
-  return verifyAnswer("normal");
+    return verifyAnswer("normal");
 }
+
+

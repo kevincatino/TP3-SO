@@ -18,7 +18,7 @@ all: server client
 
 
 server: $(OBJECTS_SERVER) $(OBJECTS_CHALLENGES)
-	@$(GCC) $(GCCFLAGS) $(OBJECTS_SERVER) $(OBJECTS_CHALLENGES) -o $(TARGET_SERVER) $(GCCLM)
+	@$(GCC) $(GCCFLAGS) $(OBJECTS_SERVER) $(OBJECTS_CHALLENGES) section.o -o $(TARGET_SERVER) $(GCCLM)
 	-@rm -rf $(OBJECTS_SERVER)
 	-@rm -rf $(OBJECTS_CHALLENGES)
 	@echo -e "\e[3;36m[Server compiled] \e[0m"
