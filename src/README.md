@@ -4,8 +4,9 @@
 ### 1. Compilacion y linkedicion
 
 Para compilar y linkeditar el proyecto correctamente, correr:
-- ```make clean```
-- ```make all```
+1.  ```make clean```
+2.  ```make all```
+Se pueden limpiar y compilar en una sola línea corriendo ```make recompile```.
 
 ### 2. Ejecucion
 
